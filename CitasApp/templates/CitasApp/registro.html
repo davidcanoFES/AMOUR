@@ -1,0 +1,36 @@
+{% extends "InicioApp/base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+   
+   
+    <div class="contenedorFormulario">
+     
+        {% if "aceptado" in request.GET%}
+        
+        <div class="alert alert-primary" role="alert"; style="background-color: pink; color: black;">
+            Informacion enviada correctamente
+          </div>
+
+        {% endif %}
+
+        {% if "error" in request.GET%}
+        
+        <div class="alert alert-primary" role="alert"; style="background-color: pink; color: red;">
+            Campo's no valido
+          </div>
+          
+        {% endif %}
+       
+        <form action="" method="POST" style="text-align: center;">
+            {%csrf_token%}
+            <table style="color: white; margin: auto">{{miformulario.as_table}}</table>
+            <input type="submit" value="Enviar" style="background-color: pink">
+
+        </form>
+    </div>
+
+
+{% endblock %}
